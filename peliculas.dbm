@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+CAUTION: Do not modify this file unless you know what you are doing.
+ Unexpected results may occur if the code is changed deliberately.
+-->
+<dbmodel pgmodeler-ver="1.0.3" use-changelog="false" last-position="0,0" last-zoom="0.8" max-obj-count="6"
+	 default-schema="public" default-owner="postgres"
+	 layers="Default layer"
+	 active-layers="0"
+	 layer-name-colors="#000000"
+	 layer-rect-colors="#b4b4b4"
+	 show-layer-names="false" show-layer-rects="false">
+<database name="PELICULAS" is-template="false" allow-conns="true">
+	<tablespace name="pg_global"/>
+</database>
+
+<schema name="public" layers="0" fill-color="#e1e1e1" sql-disabled="true">
+</schema>
+
+<table name="ACTOR" layers="0" collapse-mode="2" max-obj-count="9" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="659.028" y="515.556"/>
+	<column name="RFCactor" not-null="true">
+		<type name="varchar" length="13"/>
+	</column>
+	<column name="honorario" not-null="true">
+		<type name="money" length="0"/>
+	</column>
+	<column name="sexo" not-null="true">
+		<type name="varchar" length="1"/>
+	</column>
+	<column name="nacionalidad" not-null="true">
+		<type name="varchar" length="40"/>
+	</column>
+	<column name="nombrePila" not-null="true">
+		<type name="varchar" length="60"/>
+	</column>
+	<column name="apellidoP" not-null="true">
+		<type name="varchar" length="40"/>
+	</column>
+	<column name="apellidoM">
+		<type name="varchar" length="40"/>
+	</column>
+	<column name="fechaN" not-null="true">
+		<type name="date" length="0"/>
+	</column>
+	<constraint name="ACTOR_pk" type="pk-constr" table="public.&quot;ACTOR&quot;">
+		<columns names="RFCactor" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="PELICULA" layers="0" collapse-mode="2" max-obj-count="4" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="655" y="260.972"/>
+	<column name="IDpelicula" not-null="true">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="clasificacion" not-null="true">
+		<type name="varchar" length="20"/>
+	</column>
+	<column name="titulo" not-null="true">
+		<type name="varchar" length="60"/>
+	</column>
+	<column name="genero" not-null="true">
+		<type name="varchar" length="60"/>
+	</column>
+	<constraint name="PELICULA_pk" type="pk-constr" table="public.&quot;PELICULA&quot;">
+		<columns names="IDpelicula" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<relationship name="actua" type="relnn" layers="0"
+	 src-col-pattern="{sc}_{st}" dst-col-pattern="{sc}_{dt}"
+	 pk-pattern="{gt}_pk" uq-pattern="{gt}_uq"
+	 src-fk-pattern="{st}_fk" dst-fk-pattern="{dt}_fk"
+	 pk-col-pattern="id"
+	 custom-color="#00ff00"
+	 src-table="public.&quot;PELICULA&quot;"
+	 dst-table="public.&quot;ACTOR&quot;"
+	 src-required="false" dst-required="false"
+	 table-name="many_PELICULA_has_many_ACTOR">
+	<label ref-type="name-label">
+		<position x="0" y="0"/>
+	</label>
+	<column name="actorPrincipal" not-null="true">
+		<type name="varchar" length="120"/>
+	</column>
+</relationship>
+
+<table name="DIRECTOR" layers="0" collapse-mode="2" max-obj-count="6" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="258.75" y="97.6389"/>
+	<column name="RFCdirector" not-null="true">
+		<type name="varchar" length="13"/>
+	</column>
+	<column name="nombrePila" not-null="true">
+		<type name="varchar" length="60"/>
+	</column>
+	<column name="apellidoP" not-null="true">
+		<type name="varchar" length="40"/>
+	</column>
+	<column name="apellidoM">
+		<type name="varchar" length="40"/>
+	</column>
+	<column name="paisOrigen" not-null="true">
+		<type name="varchar" length="60"/>
+	</column>
+	<constraint name="DIRECTOR_pk" type="pk-constr" table="public.&quot;DIRECTOR&quot;">
+		<columns names="RFCdirector" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="SALA" layers="0" collapse-mode="2" max-obj-count="6" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1061.25" y="100.972"/>
+	<column name="IDsala" not-null="true">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="nombre" not-null="true">
+		<type name="varchar" length="60"/>
+	</column>
+	<column name="calle" not-null="true">
+		<type name="varchar" length="40"/>
+	</column>
+	<column name="numero" not-null="true">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="CP" not-null="true">
+		<type name="smallint" length="0"/>
+	</column>
+	<constraint name="SALA_pk" type="pk-constr" table="public.&quot;SALA&quot;">
+		<columns names="IDsala" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="PRODUCTORA" layers="0" collapse-mode="2" max-obj-count="3" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="639.861" y="13.6111"/>
+	<column name="IDproductora" not-null="true">
+		<type name="smallint" length="0"/>
+	</column>
+	<column name="razonSocial" not-null="true">
+		<type name="varchar" length="80"/>
+	</column>
+	<column name="fechaFundacion" not-null="true">
+		<type name="date" length="0"/>
+	</column>
+	<constraint name="PRODUCTORA_pk" type="pk-constr" table="public.&quot;PRODUCTORA&quot;">
+		<columns names="IDproductora" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<relationship name="produce" type="relnn" layers="0"
+	 src-col-pattern="{sc}_{st}" dst-col-pattern="{sc}_{dt}"
+	 pk-pattern="{gt}_pk" uq-pattern="{gt}_uq"
+	 src-fk-pattern="{st}_fk" dst-fk-pattern="{dt}_fk"
+	 pk-col-pattern="id"
+	 custom-color="#00ff00"
+	 src-table="public.&quot;PRODUCTORA&quot;"
+	 dst-table="public.&quot;PELICULA&quot;"
+	 src-required="false" dst-required="false"
+	 table-name="many_PRODUCTORA_has_many_PELICULA"/>
+
+<relationship name="dirige" type="relnn" layers="0"
+	 src-col-pattern="{sc}_{st}" dst-col-pattern="{sc}_{dt}"
+	 pk-pattern="{gt}_pk" uq-pattern="{gt}_uq"
+	 src-fk-pattern="{st}_fk" dst-fk-pattern="{dt}_fk"
+	 pk-col-pattern="id"
+	 custom-color="#55ff00"
+	 src-table="public.&quot;DIRECTOR&quot;"
+	 dst-table="public.&quot;PELICULA&quot;"
+	 src-required="false" dst-required="false"
+	 table-name="many_DIRECTOR_has_many_PELICULA">
+	<column name="directorPrincipal">
+		<type name="smallint" length="0"/>
+	</column>
+</relationship>
+
+<relationship name="proyecta" type="relnn" layers="0"
+	 src-col-pattern="{sc}_{st}" dst-col-pattern="{sc}_{dt}"
+	 pk-pattern="{gt}_pk" uq-pattern="{gt}_uq"
+	 src-fk-pattern="{st}_fk" dst-fk-pattern="{dt}_fk"
+	 pk-col-pattern="id"
+	 custom-color="#00ff00"
+	 src-table="public.&quot;SALA&quot;"
+	 dst-table="public.&quot;PELICULA&quot;"
+	 src-required="false" dst-required="false"
+	 table-name="many_SALA_has_many_PELICULA"/>
+
+</dbmodel>
